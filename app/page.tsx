@@ -5,8 +5,8 @@ import FloatingNav from "@/components/layout/FloatingNav";
 import HeroSection from "@/components/sections/HeroSection";
 import PackagesSection from "@/components/sections/PackagesSection";
 import GallerySection from "@/components/sections/GallerySection";
-import ContactSection from "@/components/sections/ContactSection";
 import StepRouter from "@/components/menu-builder/StepRouter";
+import Footer from "@/components/layout/Footer";
 
 /**
  * Hessel — Home Page
@@ -52,8 +52,8 @@ export default function HomePage() {
       </section>
 
       <GallerySection />
-
-      <ContactSection />
+      
+      <Footer />
     </main>
   );
 }
