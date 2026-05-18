@@ -63,19 +63,14 @@ p {
   color: var(--color-base);
 }
 
-/* ── Scrollbar (webkit) ───────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 6px;
+/* ── Hide Scrollbar (Global) ────────────────────────────── */
+*::-webkit-scrollbar {
+  display: none;
 }
-::-webkit-scrollbar-track {
-  background: var(--color-base);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--color-divider);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent);
+
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 /* ── Utility: visually hidden (accessibility) ─────────────── */
@@ -131,3 +126,38 @@ p {
 .gradient-border-stop-hover:hover {
   animation-play-state: paused;
 }
+
+/* Premium Rotating Glow Shadow Effect */
+.gradient-border-component {
+  position: relative;
+}
+
+.gradient-border-component::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--gradient-angle, 0deg),
+    var(--gradient-primary) 0%,
+    var(--gradient-secondary) 37%,
+    var(--gradient-accent) 30%,
+    var(--gradient-secondary) 33%,
+    var(--gradient-primary) 40%,
+    var(--gradient-primary) 50%,
+    var(--gradient-secondary) 77%,
+    var(--gradient-accent) 80%,
+    var(--gradient-secondary) 83%,
+    var(--gradient-primary) 90%
+  );
+  filter: blur(16px);
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.gradient-border-component:hover::before {
+  opacity: 0.65;
+}
+

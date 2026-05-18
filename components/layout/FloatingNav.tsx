@@ -12,7 +12,7 @@ import { useActiveSection } from "@/hooks/useActiveSection";
  */
 export default function FloatingNav() {
   const [isOpen, setIsOpen] = useState(false);
-  const activeSection = useActiveSection(["hero", "experiences", "packages", "menu", "gallery", "contact"]);
+  const activeSection = useActiveSection(["hero", "packages", "menu", "gallery", "footer"]);
 
   // Close drawer on Escape key
   useEffect(() => {

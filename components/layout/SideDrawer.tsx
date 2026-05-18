@@ -11,11 +11,10 @@ interface SideDrawerProps {
 }
 
 const NAV_ITEMS = [
-  { label: "Experiences", href: "/#experiences" },
   { label: "Packages", href: "/#packages" },
   { label: "Build Your Menu", href: "/#menu" },
   { label: "Gallery", href: "/#gallery" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/#footer" },
 ];
 
 const SOCIAL_ITEMS = [
