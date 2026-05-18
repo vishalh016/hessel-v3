@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -27,7 +27,7 @@ const SERVICE_TYPES = [
   { id: "sitdown", name: "Fine Dining" },
 ];
 
-// Fully Dynamic Editorial Signature Menus
+// Fully Dynamic Editorial Signature Menus with 3-Course Breakdown
 const SIGNATURE_MENUS = [
   // --- WEDDING MENUS ---
   {
@@ -38,6 +38,11 @@ const SIGNATURE_MENUS = [
     name: "Grand Royal Vivah",
     tagline: "Prestige non-vegetarian wedding feast featuring Hessel's crown jewel recipes.",
     dishes: ["Kolkata Mutton Biryani", "Gondhoraj Bhetki Paturi", "Chicken Rezala", "Baked Mihidana with Rabri"],
+    courses: {
+      starters: ["Gondhoraj Bhetki Paturi", "Gold-Crusted Fish Fry"],
+      mains: ["Kolkata Mutton Biryani", "Basanti Basmati Pulao", "Chicken Rezala"],
+      desserts: ["Baked Mihidana with Rabri", "Traditional Mishti Doi"]
+    }
   },
   {
     id: "wedding-zamindari-nonveg",
@@ -47,6 +52,11 @@ const SIGNATURE_MENUS = [
     name: "Zamindari Vivah Bhoj",
     tagline: "Traditional grand Bengali wedding delicacies set in ancestral royal style.",
     dishes: ["Basanti Pulao", "Kosha Mangsho (Mutton)", "Chingri Malaikari", "Nolen Gurer Sandesh"],
+    courses: {
+      starters: ["Mochar Chop", "Gondhoraj Chicken Cutlet"],
+      mains: ["Basanti Basmati Pulao", "Kosha Mangsho (Mutton)", "Gold Chingri Malaikari"],
+      desserts: ["Nolen Gurer Sandesh", "Elar Payesh"]
+    }
   },
   {
     id: "wedding-temple-veg",
@@ -56,6 +66,11 @@ const SIGNATURE_MENUS = [
     name: "Devotional Wedding Feast",
     tagline: "A majestic, pure-vegetarian wedding spread inspired by ancient temple legacy recipes.",
     dishes: ["Radhaballabhi & Alur Dom", "Gobindobhog Ghee Bhaat", "Chanar Kofta Kalia", "Narkel Cholar Dal"],
+    courses: {
+      starters: ["Radhaballabhi with Kashmiri Alur Dom", "Crispy Posto Bada"],
+      mains: ["Gobindobhog Ghee Bhaat", "Chanar Kofta Kalia", "Sona Muger Dal with Narkel"],
+      desserts: ["Nolen Gurer Payesh", "Kaju Barfi"]
+    }
   },
 
   // --- ANNAPRASHAN MENUS ---
@@ -67,6 +82,11 @@ const SIGNATURE_MENUS = [
     name: "Suno Gobindobhog Prasad",
     tagline: "Auspicious pure-vegetarian offering centering around the baby's first rice feeding.",
     dishes: ["Gobindobhog Payesh (Kheer)", "Gold-Crusted Luchi", "Narkel Cholar Dal", "Chanar Dalna"],
+    courses: {
+      starters: ["Auspicious Payesh (Kheer)", "Golden Luchi"],
+      mains: ["Chanar Dalna", "Kashmiri Alur Dom", "Narkel Cholar Dal"],
+      desserts: ["Basanti Sandesh", "Sweet Saffron Kheer"]
+    }
   },
   {
     id: "annaprashan-mukhebhaat-mixed",
@@ -76,6 +96,11 @@ const SIGNATURE_MENUS = [
     name: "Mukhe Bhaat Special",
     tagline: "A grand, wholesome family celebration spread featuring classic river fish and sweet delicacies.",
     dishes: ["Traditional Kheer/Payesh", "Katla Kalia", "Basanti Pulao", "Classic Mishti Doi"],
+    courses: {
+      starters: ["Traditional Payesh", "Bhetki Fish Fry"],
+      mains: ["Katla Kalia", "Basanti Pulao", "Chanar Dalna"],
+      desserts: ["Classic Mishti Doi", "Baked Mihidana"]
+    }
   },
   {
     id: "annaprashan-royal-nonveg",
@@ -85,6 +110,11 @@ const SIGNATURE_MENUS = [
     name: "Royal Rice Ceremony Feast",
     tagline: "Elegant modern and classic non-veg offerings for guests celebrating the new milestone.",
     dishes: ["Kaju Kishmish Pulao", "Chingri Malaikari", "Kosha Mangsho", "Nolen Gur Sandesh"],
+    courses: {
+      starters: ["Panko Bhetki Finger", "Auspicious Rice Kheer"],
+      mains: ["Kaju Kishmish Basanti Pulao", "Gold Chingri Malaikari", "Kosha Mangsho"],
+      desserts: ["Nolen Gur Sandesh", "Sweet Doi Platter"]
+    }
   },
 
   // --- SHRADH CEREMONY MENUS ---
@@ -96,6 +126,11 @@ const SIGNATURE_MENUS = [
     name: "Niramish Shradh Bhoj",
     tagline: "A pure Satvik, traditional memorial feast served with ultimate devotion.",
     dishes: ["Sada Bhaat & Ghee", "Sona Muger Dal with Veggies", "Alur Dom (Satvik)", "Nolen Gurer Sandesh"],
+    courses: {
+      starters: ["Phulko Luchi", "Beguni (Satvik)"],
+      mains: ["Sada Bhaat & Ghee", "Sona Muger Dal with Veggies", "Alur Dom"],
+      desserts: ["Nolen Gurer Sandesh", "Elar Payesh"]
+    }
   },
   {
     id: "shradh-matsyamukhi-mixed",
@@ -105,6 +140,11 @@ const SIGNATURE_MENUS = [
     name: "Matsyamukhi Shanti Bhoj",
     tagline: "The traditional peaceful ending ceremony feast featuring river fish delicacies.",
     dishes: ["Gobindobhog Ghee Bhaat", "Machher Matha Moong Dal", "Rui Machher Kalia", "Classic Mishti Doi"],
+    courses: {
+      starters: ["Topse Fish Fry", "Basanti Luchi"],
+      mains: ["Gobindobhog Ghee Bhaat", "Machher Matha Moong Dal", "Rui Machher Kalia"],
+      desserts: ["Classic Mishti Doi", "Baked Rosogolla"]
+    }
   },
 
   // --- CORPORATE MENUS ---
@@ -116,6 +156,11 @@ const SIGNATURE_MENUS = [
     name: "Corporate Premium Buffet",
     tagline: "Polished multi-cuisine and Bengali fusion setup designed for client networking events.",
     dishes: ["Gondhoraj Chicken Scaloppini", "Panch Phoron Sea Bass", "Basanti Pulao", "Nolen Gur Panna Cotta"],
+    courses: {
+      starters: ["Gondhoraj Chicken Scaloppini", "Panko Beetroot Croquette"],
+      mains: ["Panch Phoron Sea Bass", "Basanti Pulao", "Chanar Jugalbandhi"],
+      desserts: ["Nolen Gur Panna Cotta", "Baked Mihidana with Custard"]
+    }
   },
   {
     id: "corp-exec-veg",
@@ -125,6 +170,11 @@ const SIGNATURE_MENUS = [
     name: "Corporate Executive Lunch",
     tagline: "Light, healthy, yet sophisticated traditional pure-veg corporate luncheon.",
     dishes: ["Sona Muger Dal", "Radhaballabhi & Kashmiri Alur Dom", "Chanar Jugalbandhi", "Baked Sandesh"],
+    courses: {
+      starters: ["Crispy Posto Bada", "Radhaballabhi"],
+      mains: ["Sona Muger Dal", "Kashmiri Alur Dom", "Chanar Jugalbandhi"],
+      desserts: ["Baked Sandesh", "Litchi Payesh"]
+    }
   },
 
   // --- FESTIVE MENUS ---
@@ -136,6 +186,11 @@ const SIGNATURE_MENUS = [
     name: "Durga Puja Bhog Bhoj",
     tagline: "The rich, festive flavors of pure vegetarian Puja Bhog served under a divine atmosphere.",
     dishes: ["Bhuni Khichuri", "Labra (Mixed Veg)", "Beguni & Alur Dum", "Tomato Chutney with Papad"],
+    courses: {
+      starters: ["Beguni", "Phulko Luchi"],
+      mains: ["Bhuni Khichuri", "Labra (Mixed Veg)", "Kashmiri Alur Dum"],
+      desserts: ["Tomato Chutney with Papad", "Ghee Payesh"]
+    }
   },
   {
     id: "festive-milan-nonveg",
@@ -145,6 +200,11 @@ const SIGNATURE_MENUS = [
     name: "Bijoya Dashami Milan",
     tagline: "A grand celebratory non-veg spread to mark the joy of victory and festive reunions.",
     dishes: ["Luchi & Kosha Mangsho", "Bhetki Fish Fry", "Basanti Pulao", "Classic Sweet Platter"],
+    courses: {
+      starters: ["Bhetki Fish Fry", "Mochar Chop"],
+      mains: ["Luchi", "Kosha Mangsho (Mutton)", "Basanti Basmati Pulao"],
+      desserts: ["Classic Bengali Sweet Platter", "Rajbhog"]
+    }
   },
   {
     id: "festive-social-mixed",
@@ -154,6 +214,11 @@ const SIGNATURE_MENUS = [
     name: "Festive Social Buffet",
     tagline: "Warm, atmospheric gathering menu designed for multi-generational social circles.",
     dishes: ["Mutton Biryani", "Chingri Malaikari", "Radhaballabhi", "Mishti Doi & Payesh"],
+    courses: {
+      starters: ["Chicken Reshmi Kebab", "Golden Luchi"],
+      mains: ["Mutton Biryani", "Gold Chingri Malaikari", "Radhaballabhi"],
+      desserts: ["Classic Mishti Doi", "Rice Kheer"]
+    }
   },
 ];
 
@@ -162,7 +227,35 @@ export default function PackagesSection() {
   const [guestCount, setGuestCount] = useState(250);
   const [foodPref, setFoodPref] = useState("mixed");
   const [serviceType, setServiceType] = useState("buffet");
+  const [hoveredMenuId, setHoveredMenuId] = useState<string | null>(null);
+
+  // Dynamic state hooks for bidirectional events scroll tracking
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(true);
+  
+  const eventScrollRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
+
+  // Monitor scrolling track in real-time to compute arrow indicators
+  const handleEventScroll = () => {
+    if (eventScrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = eventScrollRef.current;
+      setShowLeftArrow(scrollLeft > 2);
+      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 5);
+    }
+  };
+
+  // Re-run computation on init and windows resizing
+  useEffect(() => {
+    handleEventScroll();
+    window.addEventListener("resize", handleEventScroll);
+    return () => window.removeEventListener("resize", handleEventScroll);
+  }, []);
+
+  // Compute scroll state whenever selected event category changes
+  useEffect(() => {
+    setTimeout(handleEventScroll, 50);
+  }, [selectedEvent]);
 
   // Dynamic filter logic that reacts in real-time to both selections
   const filteredMenus = SIGNATURE_MENUS.filter((menu) => {
@@ -298,7 +391,27 @@ export default function PackagesSection() {
               Events:
             </span>
             <div className="relative flex-1 flex items-center overflow-hidden">
-              <div className="flex items-center gap-4 md:gap-5 overflow-x-auto scrollbar-hide py-1.5 pr-8 flex-nowrap w-full scroll-smooth">
+              
+              {/* Soft left edge discoverability fade */}
+              <div className={cn(
+                "absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-base via-base/30 to-transparent pointer-events-none z-10 transition-opacity duration-300",
+                showLeftArrow ? "opacity-100" : "opacity-0"
+              )} />
+              {/* Minimal pulsing gold left arrow indicator */}
+              <div className={cn(
+                "absolute left-1 top-1/2 -translate-y-1/2 pointer-events-none z-20 transition-opacity duration-300",
+                showLeftArrow ? "opacity-40 animate-pulse" : "opacity-0"
+              )}>
+                <svg className="w-3.5 h-3.5 text-accent rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+
+              <div 
+                ref={eventScrollRef}
+                onScroll={handleEventScroll}
+                className="flex items-center gap-4 md:gap-5 overflow-x-auto scrollbar-hide py-1.5 px-6 flex-nowrap w-full scroll-smooth"
+              >
                 {EVENT_TYPES.map((evt, idx) => {
                   const isActive = selectedEvent === evt.id;
                   return (
@@ -319,14 +432,22 @@ export default function PackagesSection() {
                   );
                 })}
               </div>
+
               {/* Soft right edge discoverability fade */}
-              <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-base via-base/30 to-transparent pointer-events-none z-10" />
-              {/* Minimal pulsing gold arrow indicator */}
-              <div className="absolute right-1 top-1/2 -translate-y-1/2 pointer-events-none z-20 opacity-40 animate-pulse">
+              <div className={cn(
+                "absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-base via-base/30 to-transparent pointer-events-none z-10 transition-opacity duration-300",
+                showRightArrow ? "opacity-100" : "opacity-0"
+              )} />
+              {/* Minimal pulsing gold right arrow indicator */}
+              <div className={cn(
+                "absolute right-1 top-1/2 -translate-y-1/2 pointer-events-none z-20 transition-opacity duration-300",
+                showRightArrow ? "opacity-40 animate-pulse" : "opacity-0"
+              )}>
                 <svg className="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </div>
+
             </div>
           </div>
 
@@ -429,12 +550,89 @@ export default function PackagesSection() {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
+                    onMouseEnter={() => setHoveredMenuId(menu.id)}
+                    onMouseLeave={() => setHoveredMenuId(null)}
                     className={cn(
                       "snap-center p-6 md:p-7 rounded-3xl bg-[#1A050B]/60 backdrop-blur-md border border-accent/10 w-[85vw] md:w-[470px] shrink-0 relative overflow-hidden flex flex-col justify-between min-h-[290px] md:min-h-[310px] transition-all duration-500 hover:scale-[1.02] hover:border-accent/40 hover:bg-[#20070e]/80 hover:shadow-[0_0_50px_rgba(212,163,115,0.15)]"
                     )}
                   >
                     {/* Atmospheric soft internal flare */}
                     <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.02] via-transparent to-transparent pointer-events-none" />
+
+                    {/* Exquisite structured 3-Course Breakdown Hover Overlay */}
+                    <AnimatePresence>
+                      {hoveredMenuId === menu.id && menu.courses && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 15 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 15 }}
+                          transition={{ duration: 0.3 }}
+                          className="absolute inset-0 bg-[#150307]/95 backdrop-blur-lg z-20 p-6 flex flex-col justify-between border border-accent/30 rounded-3xl"
+                        >
+                          <div className="flex flex-col gap-3">
+                            <div className="flex justify-between items-center border-b border-accent/10 pb-2">
+                              <span className="font-body text-[7px] tracking-[0.25em] uppercase font-bold text-accent">
+                                Heritage Tasting Menu
+                              </span>
+                              <span className="font-display font-light italic text-xs text-accent-soft">
+                                {menu.name}
+                              </span>
+                            </div>
+                            
+                            {/* Courses List */}
+                            <div className="flex flex-col gap-2.5 mt-1">
+                              {menu.courses.starters && (
+                                <div>
+                                  <h4 className="font-body text-[8px] tracking-[0.18em] uppercase text-accent font-bold mb-0.5">
+                                    Starters
+                                  </h4>
+                                  <p className="font-body text-xs text-accent-soft/90 leading-relaxed font-light">
+                                    {menu.courses.starters.join("  •  ")}
+                                  </p>
+                                </div>
+                              )}
+                              {menu.courses.mains && (
+                                <div>
+                                  <h4 className="font-body text-[8px] tracking-[0.18em] uppercase text-accent font-bold mb-0.5">
+                                    Main Course
+                                  </h4>
+                                  <p className="font-body text-xs text-accent-soft/90 leading-relaxed font-light">
+                                    {menu.courses.mains.join("  •  ")}
+                                  </p>
+                                </div>
+                              )}
+                              {menu.courses.desserts && (
+                                <div>
+                                  <h4 className="font-body text-[8px] tracking-[0.18em] uppercase text-accent font-bold mb-0.5">
+                                    Desserts
+                                  </h4>
+                                  <p className="font-body text-xs text-accent-soft/90 leading-relaxed font-light">
+                                    {menu.courses.desserts.join("  •  ")}
+                                  </p>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+
+                          <div className="pt-2 border-t border-accent/10 flex justify-between items-center">
+                            <span className="font-body text-[6px] tracking-[0.2em] uppercase font-bold text-accent-soft/30">
+                              Interactive Tasting
+                            </span>
+                            <a
+                              href={getWhatsAppLink(menu.name)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="group/cta inline-flex items-center gap-1.5 font-body text-[10px] font-bold uppercase tracking-[0.22em] text-accent transition-all duration-300"
+                            >
+                              <span className="relative pb-0.5 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-accent after:scale-x-0 group-hover/cta:after:scale-x-100 after:origin-bottom-left after:transition-transform after:duration-300">
+                                Book Course
+                              </span>
+                              <span>→</span>
+                            </a>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
 
                     {/* Card Top: Category & Name */}
                     <div className="flex flex-col gap-1.5 relative z-10">
