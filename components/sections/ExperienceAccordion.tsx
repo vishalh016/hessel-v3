@@ -9,12 +9,12 @@ import { BorderRotate } from "@/components/ui/BorderRotate";
 export const EXPERIENCES = [
   {
     id: "weddings",
-    title: "Luxury Weddings",
+    title: "Weddings",
     image: "/images/exp-weddings.png",
   },
   {
     id: "corporate",
-    title: "Corporate Galas",
+    title: "Family Gatherings",
     image: "/images/exp-corporate.png",
   },
   {
@@ -24,12 +24,12 @@ export const EXPERIENCES = [
   },
   {
     id: "festival",
-    title: "Cultural Events",
+    title: "Festive Celebrations",
     image: "/images/exp-festival.png",
   },
   {
     id: "signature",
-    title: "Signature Tasting",
+    title: "Special Occasions",
     image: "/images/hero-bg.png",
   },
 ];

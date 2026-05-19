@@ -328,15 +328,6 @@ export default function PackagesSection() {
         
         {/* Section Header */}
         <div className="text-center mb-4">
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 0.6, y: 0 }}
-            transition={{ duration: 1.2 }}
-            viewport={{ once: true }}
-            className="text-accent font-semibold tracking-[0.25em] uppercase text-xs mb-2 inline-block"
-          >
-            Bespoke Gatherings
-          </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -344,7 +335,7 @@ export default function PackagesSection() {
             viewport={{ once: true }}
             className="font-display font-light text-5xl md:text-6xl text-accent-soft tracking-wide leading-tight"
           >
-            Hospitality <span className="italic font-light text-accent">Configurator</span>
+            ঐতিহ্যের <span className="italic font-light text-accent">আসর</span>
           </motion.h2>
         </div>
 
