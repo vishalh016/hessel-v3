@@ -86,20 +86,9 @@ const ContactButton = ({
 
 export default function Footer({ className }: { className?: string }) {
   return (
-    <footer id="footer" className={cn("relative w-full bg-base overflow-hidden border-t border-accent/5", className)}>
+    <footer id="footer" className={cn("relative w-full bg-transparent overflow-hidden border-t border-accent/5", className)}>
         {/* Cinematic Background Atmosphere */}
         <div className="absolute inset-0 pointer-events-none z-0">
-            {/* Layer 1: THE PHYSICAL SILK SURFACE (High-Res Image) */}
-            <div className="absolute inset-0 select-none pointer-events-none opacity-50">
-              <Image
-                src="/images/bg-1.png"
-                alt="Hessel Heritage Silk"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-[#4A1625]/40 mix-blend-multiply" />
-            </div>
-
             {/* Warmer emotional lighting near Bengali identity on the left */}
             <motion.div 
                 animate={{ opacity: [0.15, 0.25, 0.15], scale: [1, 1.04, 1] }}
@@ -112,19 +101,6 @@ export default function Footer({ className }: { className?: string }) {
                 animate={{ opacity: [0.08, 0.14, 0.08] }}
                 transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute top-1/2 left-[50%] -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] bg-accent/[0.03] blur-[85px] rounded-full"
-            />
-
-            {/* Deep Cinematic Vignette casting darkness towards the far right */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_25%,rgba(26,5,11,0.96)_95%)]" />
-            
-            {/* Premium Gold Illustrations Layer (Alpana/Jamdani Vibe) - Increased visibility to match the mock-up */}
-            <div 
-                className="absolute inset-0 opacity-[0.09] mix-blend-screen" 
-                style={{ 
-                    backgroundImage: `url("https://framerusercontent.com/images/g0QcWrxr87K0ufOxIUFBakwYA8.png")`, 
-                    backgroundSize: "240px", 
-                    backgroundRepeat: "repeat" 
-                }} 
             />
             
             {/* Asymmetrical Crest/Logo Watermark - Magnified, deep atmospheric blur on far right fade */}
@@ -143,15 +119,6 @@ export default function Footer({ className }: { className?: string }) {
             >
                 <Image src="/logo/logo-premium.png" alt="" fill className="object-contain" priority />
             </motion.div>
-
-            {/* Ultra-Soft Film Grain for Velvety Depth */}
-            <svg className="absolute w-0 h-0 hidden">
-              <filter id="grain">
-                <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" />
-                <feColorMatrix type="matrix" values="1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 0.06 0" />
-              </filter>
-            </svg>
-            <div className="absolute inset-0 pointer-events-none mix-blend-overlay opacity-25" style={{ filter: "url(#grain)" }} />
         </div>
 
         {/* Soft visual dissolve fade layer at the absolute bottom edge */}

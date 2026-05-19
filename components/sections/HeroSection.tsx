@@ -77,26 +77,8 @@ export default function HeroSection() {
     <section
       ref={containerRef}
       id="hero"
-      className="relative min-h-screen flex items-center bg-[#2D0B13] overflow-hidden pt-32 md:pt-0"
+      className="relative min-h-screen flex items-center bg-transparent overflow-hidden pt-32 md:pt-0"
     >
-      {/* ── LUXURY BURGUNDY SILK SATEEN SYSTEM ── */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
-
-        {/* Layer 1: THE PHYSICAL SILK SURFACE (High-Res Image) */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/bg-1.png"
-            alt="Hessel Heritage Silk"
-            fill
-            className="object-cover opacity-80"
-            priority
-          />
-          {/* Subtle Burgundy Depth Mix */}
-          <div className="absolute inset-0 bg-[#2D0B13]/30 mix-blend-multiply" />
-        </div>
-
-        {/* Layer 2: PURE PHYSICAL SILK (Clean Texture Only) */}
-      </div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">

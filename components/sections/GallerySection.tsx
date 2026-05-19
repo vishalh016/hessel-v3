@@ -18,7 +18,7 @@ const GALLERY_ITEMS = [
  */
 export default function GallerySection() {
   return (
-    <section id="gallery" className="py-section bg-base relative overflow-hidden">
+    <section id="gallery" className="py-section bg-transparent relative overflow-hidden">
       <div className="container mx-auto px-6 mb-16">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="max-w-2xl">

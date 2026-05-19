@@ -289,7 +289,7 @@ export default function PackagesSection() {
   };
 
   return (
-    <section id="packages" className="py-14 md:py-16 bg-base relative overflow-hidden border-t border-accent/5">
+    <section id="packages" className="py-14 md:py-16 bg-transparent relative overflow-hidden border-t border-accent/5">
       {/* Dynamic Range Slider Custom Tactile Styling */}
       <style jsx global>{`
         input[type="range"]::-webkit-slider-thumb {
@@ -323,40 +323,6 @@ export default function PackagesSection() {
           background: #D4A373;
         }
       `}</style>
-
-      {/* Cinematic Background Atmosphere */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        {/* Layer 1: THE PHYSICAL SILK SURFACE (High-Res Image) */}
-        <div className="absolute inset-0 select-none pointer-events-none opacity-40">
-          <Image
-            src="/images/bg-1.png"
-            alt="Hessel Heritage Silk"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-[#4A1625]/50 mix-blend-multiply" />
-        </div>
-
-        {/* Dynamic slow ambient candlelight shimmer */}
-        <motion.div 
-            animate={{ opacity: [0.1, 0.16, 0.1] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/2 left-[50%] -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/[0.03] blur-[120px] rounded-full"
-        />
-        
-        {/* Cinematic Vignette */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(26,5,11,0.96)_95%)]" />
-
-        {/* Scattered Alpana Watermark illustration */}
-        <div 
-            className="absolute inset-0 opacity-[0.06] mix-blend-screen pointer-events-none select-none" 
-            style={{ 
-                backgroundImage: `url("https://framerusercontent.com/images/g0QcWrxr87K0ufOxIUFBakwYA8.png")`, 
-                backgroundSize: "260px", 
-                backgroundRepeat: "repeat" 
-            }} 
-        />
-      </div>
 
       <div className="container mx-auto px-6 relative z-10 max-w-7xl">
         

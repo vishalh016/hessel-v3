@@ -7,6 +7,7 @@ import PackagesSection from "@/components/sections/PackagesSection";
 import GallerySection from "@/components/sections/GallerySection";
 import StepRouter from "@/components/menu-builder/StepRouter";
 import Footer from "@/components/layout/Footer";
+import SilkBackground from "@/components/layout/SilkBackground";
 
 /**
  * Hessel — Home Page
@@ -14,7 +15,7 @@ import Footer from "@/components/layout/Footer";
  */
 export default function HomePage() {
   return (
-    <main className="relative">
+    <SilkBackground>
       {/* Navigation */}
       <FloatingNav />
 
@@ -27,7 +28,7 @@ export default function HomePage() {
 
       <PackagesSection />
 
-      <section id="menu" className="min-h-screen bg-surface py-section relative overflow-hidden">
+      <section id="menu" className="min-h-screen py-section relative overflow-hidden">
         <div className="container mx-auto px-6 text-center">
           <motion.span
             initial={{ opacity: 0 }}
@@ -45,7 +46,7 @@ export default function HomePage() {
           </motion.h2>
           
           {/* Menu Builder Router */}
-          <div className="max-w-4xl mx-auto bg-base/40 backdrop-blur-xl border border-divider/20 rounded-[40px] p-12 min-h-[600px] flex items-center justify-center">
+          <div className="max-w-4xl mx-auto bg-[#1A050B]/60 backdrop-blur-xl border border-accent/10 rounded-[40px] p-12 min-h-[600px] flex items-center justify-center">
              <StepRouter />
           </div>
         </div>
@@ -54,6 +55,6 @@ export default function HomePage() {
       <GallerySection />
       
       <Footer />
-    </main>
+    </SilkBackground>
   );
 }
