@@ -77,11 +77,11 @@ export default function HeroSection() {
     <section
       ref={containerRef}
       id="hero"
-      className="relative min-h-screen flex items-center bg-transparent overflow-hidden pt-32 md:pt-0"
+      className="relative min-h-[85vh] md:min-h-screen flex items-center bg-transparent overflow-hidden pt-20 pb-8 md:py-0"
     >
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-24">
 
           {/* Left Side: Branding + Content (45%) */}
           <div className="w-full lg:w-[45%] text-center">
@@ -92,8 +92,8 @@ export default function HeroSection() {
               className="flex flex-col items-center"
             >
               {/* Static Branding Block - Clean & Minimalist */}
-              <div className="mb-4">
-                <div className="relative w-40 h-40 md:w-56 md:h-56 lg:w-64 md:h-56 lg:h-56 mx-auto">
+              <div className="mb-2 md:mb-4">
+                <div className="relative w-28 h-28 md:w-56 md:h-56 lg:w-64 lg:h-56 mx-auto">
                   <Image
                     src="/logo/logo-h.png"
                     alt="Hessel Logo"
@@ -105,11 +105,11 @@ export default function HeroSection() {
               </div>
 
               {/* Cinematic Main Headline with Ambient Depth */}
-              <h2 className="text-2xl md:text-3xl font-display text-primary leading-[1.4] mb-3 tracking-wide [text-shadow:0_2px_4px_rgba(0,0,0,0.4)] opacity-95">
+              <h2 className="text-xl md:text-3xl font-display text-primary leading-[1.4] mb-2 tracking-wide [text-shadow:0_2px_4px_rgba(0,0,0,0.4)] opacity-95">
                 ঐতিহ্যে ভরে উঠুক আপনার
               </h2>
 
-              <div className="h-12 md:h-14 flex items-center justify-center overflow-hidden mb-0">
+              <div className="h-10 md:h-14 flex items-center justify-center overflow-hidden mb-0">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeId}
@@ -120,7 +120,7 @@ export default function HeroSection() {
                       duration: 0.7,
                       ease: [0.25, 0.1, 0.25, 1]
                     }}
-                    className="text-display-md font-display italic text-accent-soft [text-shadow:0_2px_4px_rgba(0,0,0,0.6),_0_0_30px_rgba(212,163,115,0.4)]"
+                    className="text-3xl md:text-display-md font-display italic text-accent-soft [text-shadow:0_2px_4px_rgba(0,0,0,0.6),_0_0_30px_rgba(212,163,115,0.4)]"
                   >
                     {activeExperience?.title}
                   </motion.div>
@@ -132,7 +132,7 @@ export default function HeroSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.2, duration: 1 }}
-                className="mt-1 lg:mt-2 flex flex-col sm:flex-row items-center gap-6"
+                className="mt-2 flex flex-row items-center justify-center gap-3 w-full sm:w-auto"
               >
                 <BorderRotate
                   animationMode="rotate-on-hover"
@@ -145,13 +145,13 @@ export default function HeroSection() {
                     secondary: '#D4A373',
                     accent: '#F9EBC7'
                   }}
-                  className="w-full sm:w-auto"
+                  className="w-auto"
                 >
                   <button 
                     onClick={() => document.getElementById("packages")?.scrollIntoView({ behavior: "smooth" })}
-                    className="group relative w-full sm:w-auto sm:min-w-[200px] h-[52px] px-6 bg-gradient-to-br from-[#D4A373] via-[#F3D19E] to-[#D4A373] font-semibold uppercase tracking-[0.25em] text-[13px] rounded-full overflow-hidden shadow-[0_0_20px_rgba(212,163,115,0.25)] cursor-pointer"
+                    className="group relative w-auto min-w-[130px] sm:min-w-[200px] h-[48px] px-4 sm:px-6 bg-gradient-to-br from-[#D4A373] via-[#F3D19E] to-[#D4A373] font-semibold uppercase tracking-[0.16em] sm:tracking-[0.25em] text-[10px] sm:text-[13px] rounded-full overflow-hidden shadow-[0_0_20px_rgba(212,163,115,0.25)] cursor-pointer"
                   >
-                    <span className="relative z-10 text-[#1A050B] font-bold">Book Your Event</span>
+                    <span className="relative z-10 text-[#1A050B] font-bold">Book Event</span>
                   </button>
                 </BorderRotate>
 
@@ -166,11 +166,11 @@ export default function HeroSection() {
                     secondary: '#D4A373',
                     accent: '#F9EBC7'
                   }}
-                  className="w-full sm:w-auto"
+                  className="w-auto"
                 >
                   <button 
                     onClick={() => document.getElementById("packages")?.scrollIntoView({ behavior: "smooth" })}
-                    className="group relative w-full sm:w-auto sm:min-w-[200px] h-[52px] px-6 bg-gradient-to-br from-[#D4A373] via-[#F3D19E] to-[#D4A373] font-semibold uppercase tracking-[0.25em] text-[13px] rounded-full overflow-hidden shadow-[0_0_20px_rgba(212,163,115,0.25)] cursor-pointer"
+                    className="group relative w-auto min-w-[130px] sm:min-w-[200px] h-[48px] px-4 sm:px-6 bg-gradient-to-br from-[#D4A373] via-[#F3D19E] to-[#D4A373] font-semibold uppercase tracking-[0.16em] sm:tracking-[0.25em] text-[10px] sm:text-[13px] rounded-full overflow-hidden shadow-[0_0_20px_rgba(212,163,115,0.25)] cursor-pointer"
                   >
                     <span className="relative z-10 text-[#1A050B] font-bold">Explore Menu</span>
                   </button>
