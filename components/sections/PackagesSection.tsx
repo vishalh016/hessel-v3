@@ -324,7 +324,7 @@ export default function PackagesSection() {
         }
       `}</style>
 
-      <div className="container mx-auto px-6 relative z-10 max-w-7xl">
+      <div className="w-[92vw] max-w-[1550px] mx-auto px-[clamp(1.5rem,3vw,3rem)] relative z-10">
         
         {/* Section Header */}
         <div className="text-center mb-4">
@@ -510,7 +510,7 @@ export default function PackagesSection() {
                     onMouseEnter={() => setHoveredMenuId(menu.id)}
                     onMouseLeave={() => setHoveredMenuId(null)}
                     className={cn(
-                      "snap-center p-6 md:p-7 rounded-3xl bg-[#1A050B]/60 backdrop-blur-md border border-accent/10 w-[85vw] md:w-[470px] shrink-0 relative overflow-hidden flex flex-col justify-between min-h-[290px] md:min-h-[310px] transition-all duration-500 hover:scale-[1.02] hover:border-accent/40 hover:bg-[#20070e]/80 hover:shadow-[0_0_50px_rgba(212,163,115,0.15)]"
+                      "snap-center p-6 md:p-7 lg:p-8 rounded-3xl bg-[#1A050B]/60 backdrop-blur-md border border-accent/10 w-[85vw] lg:w-[520px] md:w-[480px] shrink-0 relative overflow-hidden flex flex-col justify-between min-h-[290px] md:min-h-[310px] transition-all duration-500 hover:scale-[1.02] hover:border-accent/40 hover:bg-[#20070e]/80 hover:shadow-[0_0_50px_rgba(212,163,115,0.15)]"
                     )}
                   >
                     {/* Atmospheric soft internal flare */}
@@ -649,7 +649,7 @@ export default function PackagesSection() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="snap-center p-6 md:p-7 rounded-3xl bg-[#1A050B]/60 backdrop-blur-md border border-accent/10 w-[85vw] md:w-[470px] shrink-0 relative overflow-hidden flex flex-col justify-between min-h-[290px] md:min-h-[310px]"
+                  className="snap-center p-6 md:p-7 lg:p-8 rounded-3xl bg-[#1A050B]/60 backdrop-blur-md border border-accent/10 w-[85vw] lg:w-[520px] md:w-[480px] shrink-0 relative overflow-hidden flex flex-col justify-between min-h-[290px] md:min-h-[310px]"
                 >
                   <div className="flex flex-col gap-3 text-center items-center justify-center flex-1">
                     <span className="text-3xl">🕊️</span>
@@ -685,7 +685,7 @@ export default function PackagesSection() {
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="snap-center p-6 md:p-7 rounded-3xl bg-gradient-to-r from-accent/[0.04] to-accent/[0.09] border border-accent/20 w-[85vw] md:w-[470px] shrink-0 relative overflow-hidden flex flex-col justify-between min-h-[290px] md:min-h-[310px] shadow-[0_4px_25px_rgba(0,0,0,0.3)] transition-all duration-500 hover:scale-[1.02] hover:border-accent/40 hover:shadow-[0_0_50px_rgba(212,163,115,0.15)]"
+                className="snap-center p-6 md:p-7 lg:p-8 rounded-3xl bg-gradient-to-r from-accent/[0.04] to-accent/[0.09] border border-accent/20 w-[85vw] lg:w-[520px] md:w-[480px] shrink-0 relative overflow-hidden flex flex-col justify-between min-h-[290px] md:min-h-[310px] shadow-[0_4px_25px_rgba(0,0,0,0.3)] transition-all duration-500 hover:scale-[1.02] hover:border-accent/40 hover:shadow-[0_0_50px_rgba(212,163,115,0.15)]"
               >
                 {/* Visual Glow */}
                 <div className="absolute right-0 top-0 w-44 h-44 bg-accent/5 blur-2xl rounded-full pointer-events-none" />
@@ -707,9 +707,7 @@ export default function PackagesSection() {
                 <div className="flex flex-col gap-2 relative z-10 mt-3 pt-1">
                   <div className="pt-1">
                     <a
-                      href={getWhatsAppLink()}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href="/menu-builder"
                       className="group/cta inline-flex items-center gap-1.5 font-body text-xs font-bold uppercase tracking-[0.25em] text-accent transition-all duration-300"
                     >
                       <span className="relative pb-0.5 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-accent after:scale-x-0 group-hover/cta:after:scale-x-100 after:origin-bottom-left after:transition-transform after:duration-300">
@@ -725,13 +723,19 @@ export default function PackagesSection() {
             </AnimatePresence>
           </div>
 
-          {/* Carousel Hint indicator */}
-          <div className="flex justify-center items-center gap-1.5 mt-2 opacity-40">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent/60" />
-            <span className="font-body text-[8px] tracking-[0.2em] uppercase font-bold text-accent-soft">
-              Explore Dynamic Custom Menus
-            </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-accent/60" />
+          {/* New Luxury Standalone Editorial CTA */}
+          <div className="flex justify-center items-center mt-12 mb-4 px-4 text-center">
+            <a
+              href="/menu-builder"
+              className="group/editorial inline-flex items-center gap-2.5 font-body text-xs md:text-sm tracking-[0.18em] uppercase text-accent font-semibold transition-colors duration-300 hover:text-accent-soft"
+            >
+              <span className="relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-accent group-hover/editorial:after:bg-accent-soft after:scale-x-0 group-hover/editorial:after:scale-x-100 after:origin-bottom-left after:transition-transform after:duration-300">
+                Not satisfied with the existing experiences? Build your own menu
+              </span>
+              <span className="inline-block transition-transform duration-300 transform group-hover/editorial:translate-x-2">
+                →
+              </span>
+            </a>
           </div>
 
         </div>

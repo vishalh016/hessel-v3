@@ -196,7 +196,7 @@ export default function GallerySection() {
           className="absolute bottom-1/4 right-[10%] w-[500px] h-[500px] bg-accent/[0.02] blur-[110px] rounded-full pointer-events-none z-0"
       />
 
-      <div className="container mx-auto px-6 relative z-10 max-w-7xl">
+      <div className="w-[92vw] max-w-[1550px] mx-auto px-[clamp(1.5rem,3vw,3rem)] relative z-10">
         
         {/* Editorial Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14">
@@ -260,7 +260,7 @@ export default function GallerySection() {
         {/* Editorial Masonry Grid / Responsive Staggered Layout */}
         <motion.div 
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 w-full"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-[clamp(1.5rem,2.5vw,3rem)] w-full"
         >
           <AnimatePresence mode="popLayout">
             {filteredItems.map((item, idx) => (

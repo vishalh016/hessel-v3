@@ -28,29 +28,6 @@ export default function HomePage() {
 
       <PackagesSection />
 
-      <section id="menu" className="min-h-screen py-section relative overflow-hidden">
-        <div className="container mx-auto px-6 text-center">
-          <motion.span
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-accent font-semibold tracking-widest uppercase text-sm mb-4 inline-block"
-          >
-            Craft Your Experience
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-display-lg text-primary mb-12"
-          >
-            Menu <span className="italic text-accent">Builder</span>
-          </motion.h2>
-          
-          {/* Menu Builder Router */}
-          <div className="max-w-4xl mx-auto bg-[#1A050B]/60 backdrop-blur-xl border border-accent/10 rounded-[40px] p-12 min-h-[600px] flex items-center justify-center">
-             <StepRouter />
-          </div>
-        </div>
-      </section>
 
       <GallerySection />
       
