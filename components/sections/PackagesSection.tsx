@@ -289,7 +289,7 @@ export default function PackagesSection() {
   };
 
   return (
-    <section id="packages" className="py-14 md:py-16 bg-transparent relative overflow-hidden border-t border-accent/5">
+    <section id="packages" className="py-14 md:py-16 bg-transparent relative overflow-hidden">
       {/* Dynamic Range Slider Custom Tactile Styling */}
       <style jsx global>{`
         input[type="range"]::-webkit-slider-thumb {

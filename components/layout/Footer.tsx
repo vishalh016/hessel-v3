@@ -86,7 +86,7 @@ const ContactButton = ({
 
 export default function Footer({ className }: { className?: string }) {
   return (
-    <footer id="footer" className={cn("relative w-full bg-transparent overflow-hidden border-t border-accent/5", className)}>
+    <footer id="footer" className={cn("relative w-full bg-transparent overflow-hidden", className)}>
         {/* Cinematic Background Atmosphere */}
         <div className="absolute inset-0 pointer-events-none z-0">
             {/* Warmer emotional lighting near Bengali identity on the left */}
