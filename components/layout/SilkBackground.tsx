@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import WhatsAppButton from "./WhatsAppButton";
 
 export default function SilkBackground({ children }: { children: React.ReactNode }) {
   return (
@@ -63,6 +64,9 @@ export default function SilkBackground({ children }: { children: React.ReactNode
       <div className="relative z-10 w-full min-h-screen">
         {children}
       </div>
+
+      {/* Persistent WhatsApp Contact Button */}
+      <WhatsAppButton />
     </div>
   );
 }

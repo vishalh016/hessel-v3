@@ -1,0 +1,1312 @@
+[
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Ghugni Counter",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Chaat Counter",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Kathi Roll Counter",
+    "flag": "Veg/Non-Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Live Kathi Roll Counter",
+    "flag": "Veg/Non-Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Mughlai Paratha Counter",
+    "flag": "Veg/Non-Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Banarasi Paan Counter",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Chicken Hariyali Kebab",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Chicken Malai Kebab",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Chicken Reshmi Kebab",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Chicken Tikka Kebab",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Mutton Galouti Kebab",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Mutton Seekh Kebab",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Paneer Shashlik",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Paneer Tikka",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Veg Seekh Kebab",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Tandoori Broccoli",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Fish Tandoori",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Shawarma Counter",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Chinese Wok Counter",
+    "flag": "Veg/Non-Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Chicken Dim Sum",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Veg Dim Sum",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Dumpling & Bao Counter",
+    "flag": "Veg/Non-Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Sushi Platter",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Bao Buns",
+    "flag": "Veg/Non-Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Pasta Alfredo",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Live Pasta Counter",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Truffle Pasta",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Woodfire Pizza Station",
+    "flag": "Veg/Non-Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Mini Pizza Station",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Live Grill Station",
+    "flag": "Veg/Non-Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Cheesecake Counter",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Ice Cream Counter",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Kulfi Falooda",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Live Jalebi Counter",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Coffee Counter",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Fresh Lime Soda",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Molecular Mocktail Bar",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Tea Counter",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Welcome Mocktails",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Jaljeera",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Gondhoraj Lemonade",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Aam Pora Shorbot",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Bun Maska & Tea",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Maggi Station",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Live Counter",
+    "item_name": "Mini Biryani Cups",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Cajun Fish",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Fish Butter Fry",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Fish Croquette",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Fish Diamond Fry",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Fish Finger",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Fish Fry",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Fish Kabiraji",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Golden Fried Prawn",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Gondhoraj Fish",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Honey Chilli Fish",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Prawn Cocktail",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Prawn Cutlet",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Smoked Bhetki Canapés",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Tempura Prawns",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Thai Fish Finger",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Topse Fry",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Afghani Chicken",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Chicken 65",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Chicken à la Kiev Bites",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Chicken Kabiraji",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Chicken Lollipop",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Chicken Nuggets",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Chicken Pakora",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Chicken Satay",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Dry Chilli Chicken",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Korean Fried Chicken",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Peri Peri Chicken",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Popcorn Chicken",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Smoked Chicken Tikka",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Lamb Chops with Jus",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Mutton Chop",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Mutton Shami Kebab",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Assorted Pakora",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Beguni",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Beetroot Chop",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Bruschetta",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Cheese Balls",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Corn Cheese Nuggets",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Crispy Baby Corn",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Crispy Lotus Stem",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Dhokar Chop",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Falafel",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Fuluri",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Jalapeno Baby Corn Fritters",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Kumro Phuler Bora",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Mini Burgers",
+    "flag": "Veg/Non-Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Mochar Chop",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Paneer Pakora",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Peyaji",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Posto Bora",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Spring Roll",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Stuffed Jalapeno",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Stuffed Mushroom",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Vegetable Chop",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Dahi Puri",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Papdi Chaat",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Starter",
+    "item_name": "Pani Puri",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Aloo Posto",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Alur Dom",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Basanti Pulao",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Begun Basanti",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chhanar Dalna",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chhanar Kalia",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chhanar Kofta",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Cholar Dal",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chorchori",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Dahi Potol",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Dal Makhani",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Dal Tadka",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Dhokar Dalna",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Dum Pulao",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Echorer Dalna",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Fried Rice",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Fulkopir Roast",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Green Peas Kochuri",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Kanchkolar Kofta",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Kochuri",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Koraishutir Kochuri",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Luchi",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Maharani Pulao",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Malai Kofta",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Mediterranean Rice Bowl",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Misti Pulao",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Mixed Veg Curry",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Mixed Veg Navratan",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Mochar Ghonto",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Moong Dal",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Navratan Pulao",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Paneer Butter Masala",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Paneer Do Pyaza",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Paneer Lababdar",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Paneer Pashinda",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Paneer Tikka Masala",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Plain Pulao",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Potoler Dorma",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Radhaballavi",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Saffron Pulao",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Schezwan Noodles",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Shahi Paneer",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Shukto",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Sona Moong Dal",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Steamed Rice",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Thai Green Curry",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Veg Chow Mein",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Veg Fried Rice",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Veg Hakka Noodles",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Veg Manchurian",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Rosogolla",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Rajbhog",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Komola Bhog",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Rasmalai",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Pantua",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Mihidana",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Sitabhog",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Kheer Kadam",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Makha Sandesh",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Jolbhora Sandesh",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Bhapa Sandesh",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Nolen Gurer Sandesh",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Ledikeni",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Langcha",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Sarbhaja",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Sarpuria",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Chocolate Sandesh",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Belgian Chocolate Mousse",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Chhanar Payesh",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Cheesecake",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Dessert Shooters",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Ice Cream",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Kulfi Falooda",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Malpua",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Payesh",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Rabri",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Mishti Doi",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Green Mango Chutney",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Mixed Fruit Chutney",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Potato Chutney",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Tomato Chutney",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Banarasi Paan",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Dessert",
+    "item_name": "Papad",
+    "flag": "Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Bhetki Bhapa",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Bhetki Meuniere",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Bhetki Paturi",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chingri Malai Curry",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chitol Macher Muitha",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Continental Baked Fish",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Daab Chingri",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Dahi Katla",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Doi Rui",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Fish Curry",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Fish Florentine",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Fish Munier Butter Fry",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Golda Chingri Malai Curry",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Herb Crusted Fish",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Ilish Bhapa",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Ilish Paturi",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Kasundi Aioli Fish",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Katla Coriander",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Katla Kalia",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Koi Macher Jhal",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Lobster Thermidor",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Parshe Mach Bhaja",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Prawn Thai Curry",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Rui Kalia",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Rui Posto",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Sarson Pabda",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Shorshe Ilish",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Shorshe Pabda",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Smoked Hilsa",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Tangra Macher Jhal",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Butter Chicken",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chicken Afghani",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chicken Bharta",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chicken Biryani",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chicken Chaap",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chicken Chow Mein",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chicken Curry",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chicken Do Pyaza",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chicken Duck Bungalow",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chicken Egg Biryani",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chicken Fried Rice",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chicken Handi",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chicken Kosha",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chicken Lababdar",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chicken Manchurian",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chicken Rezala",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chicken Stroganoff",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chicken Tikka Masala",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chilli Chicken Gravy",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Dhaniya Murgh Korma",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Dragon Chicken",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Dum Pukht Biryani",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Egg Biryani",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Garlic Chicken",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Lamb in Red Wine Sauce",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Mutton Bhuna",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Mutton Biryani",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Mutton Chaap",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Mutton Champaran",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Mutton Dakbungalow",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Mutton Egg Biryani",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Mutton Handi",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Mutton Laal Maas",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Mutton Rezala",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Mutton Rogan Josh",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Schezwan Chicken",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Thai Basil Chicken",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chicken Manchurian",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chilli Chicken",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Dragon Chicken",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Garlic Chicken",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Schezwan Chicken",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chicken Chow Mein",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Chicken Fried Rice",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Mixed Hakka Noodles",
+    "flag": "Veg/Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Thai Basil Chicken",
+    "flag": "Non-Veg"
+  },
+  {
+    "dish_group": "Main Course",
+    "item_name": "Prawn Thai Curry",
+    "flag": "Non-Veg"
+  }
+]

@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { ChevronLeft, ChevronRight, X, ChevronDown, ChevronUp } from "lucide-react";
 
 const FILTERS = [
   { id: "all", name: "All" },
@@ -98,7 +99,7 @@ const GALLERY_ITEMS = [
     },
     {
       id: "gal-10",
-      src: "/images/durga puja.png",
+      src: "/images/durgapuja.png",
       alt: "Durga Puja Celebration",
       category: "Festive",
       spanClass: "lg:col-span-1",
@@ -177,10 +178,78 @@ const GALLERY_ITEMS = [
  */
 export default function GallerySection() {
   const [selectedFilter, setSelectedFilter] = useState("all");
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+
+  // Reset expanded state when filter changes to ensure consistent layout
+  const handleFilterChange = (filter: string) => {
+    setSelectedFilter(filter);
+    setIsExpanded(false);
+  };
 
   const filteredItems = selectedFilter === "all"
     ? GALLERY_ITEMS
-    : GALLERY_ITEMS.filter((item) => item.category.toLowerCase() === selectedFilter.toLowerCase() || (selectedFilter === "private" && item.category === "Private Dining") || (selectedFilter === "live" && item.category === "Live Culinary"));
+    : GALLERY_ITEMS.filter((item) => 
+        item.category.toLowerCase() === selectedFilter.toLowerCase() || 
+        (selectedFilter === "private" && item.category === "Private Dining") || 
+        (selectedFilter === "live" && item.category === "Live Culinary")
+      );
+
+  // Dynamic calculation for exactly 2 rows on desktop (3-column layout)
+  const getLimitForTwoRows = (items: typeof GALLERY_ITEMS) => {
+    let rowCount = 0;
+    let colSum = 0;
+    let limit = 0;
+    
+    for (let i = 0; i < items.length; i++) {
+      const span = items[i].spanClass.includes("col-span-2") ? 2 : 1;
+      if (colSum + span > 3) {
+        rowCount++;
+        if (rowCount === 2) {
+          break;
+        }
+        colSum = span;
+      } else {
+        colSum += span;
+      }
+      limit++;
+    }
+    return limit || items.length;
+  };
+
+  const collapseLimit = getLimitForTwoRows(filteredItems);
+  const visibleItems = isExpanded ? filteredItems : filteredItems.slice(0, collapseLimit);
+
+  const openLightbox = (index: number) => {
+    setSelectedImageIndex(index);
+  };
+
+  const closeLightbox = () => {
+    setSelectedImageIndex(null);
+  };
+
+  const handlePrev = () => {
+    if (selectedImageIndex === null) return;
+    setSelectedImageIndex(selectedImageIndex === 0 ? filteredItems.length - 1 : selectedImageIndex - 1);
+  };
+
+  const handleNext = () => {
+    if (selectedImageIndex === null) return;
+    setSelectedImageIndex(selectedImageIndex === filteredItems.length - 1 ? 0 : selectedImageIndex + 1);
+  };
+
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (selectedImageIndex === null) return;
+      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "ArrowRight") handleNext();
+      if (e.key === "Escape") closeLightbox();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedImageIndex, filteredItems.length]);
 
   return (
     <section id="gallery" className="py-section bg-transparent relative overflow-hidden snap-y snap-mandatory md:snap-none">
@@ -236,7 +305,7 @@ export default function GallerySection() {
               return (
                 <button
                   key={f.id}
-                  onClick={() => setSelectedFilter(f.id)}
+                  onClick={() => handleFilterChange(f.id)}
                   className="relative py-2 text-xs md:text-sm uppercase tracking-[0.25em] font-semibold transition-all duration-300 focus:outline-none shrink-0 cursor-pointer snap-center font-body"
                   style={{
                     color: isActive ? "#FFF8F0" : "rgba(230, 204, 178, 0.55)",
@@ -263,50 +332,178 @@ export default function GallerySection() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-[clamp(1.5rem,2.5vw,3rem)] w-full"
         >
           <AnimatePresence mode="popLayout">
-            {filteredItems.map((item, idx) => (
-              <motion.div
-                key={item.id}
-                layout
-                initial={{ opacity: 0, scale: 0.97, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.97, y: 20 }}
-                transition={{ 
-                  opacity: { duration: 0.5 },
-                  layout: { type: "spring", stiffness: 300, damping: 32 },
-                  scale: { duration: 0.4 },
-                  y: { duration: 0.4 }
-                }}
-                className={cn(
-                  "relative rounded-[2rem] md:rounded-[2.8rem] overflow-hidden group border border-accent/10 hover:border-accent/30 shadow-[0_15px_45px_rgba(0,0,0,0.5)] transition-all duration-700 snap-center z-10",
-                  item.spanClass,
-                  item.aspectClass
-                )}
-              >
-                {/* Image Component with lazy loading and soft zoom */}
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-[1.2s] ease-out md:group-hover:scale-[1.04]"
-                  loading="lazy"
-                />
+            {visibleItems.map((item) => {
+              // Find actual index in filteredItems array for Lightbox navigation
+              const actualIndex = filteredItems.findIndex((fi) => fi.id === item.id);
+              
+              return (
+                <motion.div
+                  key={item.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.97, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.97, y: 20 }}
+                  onClick={() => openLightbox(actualIndex)}
+                  transition={{ 
+                    opacity: { duration: 0.5 },
+                    layout: { type: "spring", stiffness: 300, damping: 32 },
+                    scale: { duration: 0.4 },
+                    y: { duration: 0.4 }
+                  }}
+                  className={cn(
+                    "relative rounded-[2rem] md:rounded-[2.8rem] overflow-hidden group border border-accent/10 hover:border-accent/30 shadow-[0_15px_45px_rgba(0,0,0,0.5)] transition-all duration-700 snap-center z-10 cursor-pointer",
+                    item.spanClass,
+                    item.aspectClass
+                  )}
+                >
+                  {/* Image Component with lazy loading and soft zoom */}
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-[1.2s] ease-out md:group-hover:scale-[1.04]"
+                    loading="lazy"
+                  />
 
-                {/* Permanent dark cinematic vignette overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1A050B]/40 via-transparent to-transparent transition-opacity duration-700" />
+                  {/* Permanent dark cinematic vignette overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A050B]/60 via-transparent to-[#1A050B]/20 transition-opacity duration-700" />
 
-                {/* Ornate Gold Watermark Crest Overlay (Top-Right on Hover) */}
-                <div className="absolute top-6 right-6 w-8 h-8 opacity-0 group-hover:opacity-[0.12] transition-all duration-700 pointer-events-none scale-90 group-hover:scale-100 mix-blend-screen">
-                  <Image src="/logo/logo-premium.png" alt="" fill className="object-contain" />
-                </div>
+                  {/* Ornate Hover Overlay with details */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A050B]/90 via-[#1A050B]/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6 md:p-8 z-20">
+                    <span className="text-accent-soft font-body text-[10px] md:text-xs uppercase tracking-[0.2em] mb-1">
+                      {item.category}
+                    </span>
+                    <h3 className="text-primary font-display text-lg md:text-xl mb-1.5 font-medium leading-snug">
+                      {item.alt}
+                    </h3>
+                    <p className="text-secondary/85 font-body text-[11px] md:text-xs line-clamp-2 leading-relaxed mb-3">
+                      {item.desc}
+                    </p>
+                    <div className="flex items-center gap-1.5 text-accent text-[10px] md:text-xs font-semibold tracking-wider uppercase font-body">
+                      <span>View Showcase</span>
+                      <motion.span 
+                        className="inline-block text-xs"
+                        animate={{ x: [0, 4, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                      >
+                        →
+                      </motion.span>
+                    </div>
+                  </div>
 
-                {/* Thin internal soft gold frame for layered aesthetic */}
-                <div className="absolute inset-0 border border-white/5 pointer-events-none rounded-[2rem] md:rounded-[2.8rem]" />
-              </motion.div>
-            ))}
+                  {/* Ornate Gold Watermark Crest Overlay (Top-Right on Hover) */}
+                  <div className="absolute top-6 right-6 w-8 h-8 opacity-0 group-hover:opacity-[0.12] transition-all duration-700 pointer-events-none scale-90 group-hover:scale-100 mix-blend-screen z-10">
+                    <Image src="/logo/logo-premium.png" alt="" fill className="object-contain" />
+                  </div>
+
+                  {/* Thin internal soft gold frame for layered aesthetic */}
+                  <div className="absolute inset-0 border border-white/5 pointer-events-none rounded-[2rem] md:rounded-[2.8rem] z-30" />
+                </motion.div>
+              );
+            })}
           </AnimatePresence>
         </motion.div>
+
+        {/* Expand/Collapse Toggle Button */}
+        {filteredItems.length > collapseLimit && (
+          <div className="flex justify-center mt-12 md:mt-16 relative z-20">
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="group relative px-7 py-3.5 border border-accent/20 hover:border-accent/60 rounded-full bg-[#1A050B]/80 hover:bg-[#4A1625] transition-all duration-300 text-[11px] md:text-xs text-accent-soft uppercase tracking-[0.25em] font-semibold cursor-pointer shadow-[0_5px_15px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_20px_rgba(212,163,115,0.12)] flex items-center gap-2.5"
+            >
+              <span>{isExpanded ? "Collapse Collection" : "Explore Full Gallery"}</span>
+              <div className="text-accent">
+                {isExpanded ? (
+                  <ChevronUp className="w-3.5 h-3.5 transition-transform group-hover:-translate-y-0.5" />
+                ) : (
+                  <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:translate-y-0.5" />
+                )}
+              </div>
+            </button>
+          </div>
+        )}
       </div>
+
+      {/* Interactive Luxury Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImageIndex !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-[#1A050B]/96 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-12 select-none"
+            onClick={closeLightbox}
+          >
+            {/* Close Button */}
+            <button
+              onClick={closeLightbox}
+              className="absolute top-6 right-6 p-2 rounded-full border border-accent/10 hover:border-accent/40 bg-black/20 text-accent hover:text-accent-soft transition-all duration-300 cursor-pointer z-50"
+              aria-label="Close Lightbox"
+            >
+              <X className="w-5 h-5 md:w-6 md:h-6" />
+            </button>
+
+            {/* Navigation Controls */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handlePrev();
+              }}
+              className="absolute left-4 md:left-8 p-3 rounded-full border border-accent/10 hover:border-accent/40 bg-black/20 text-accent hover:text-accent-soft transition-all duration-300 cursor-pointer z-45"
+              aria-label="Previous Image"
+            >
+              <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
+            </button>
+
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleNext();
+              }}
+              className="absolute right-4 md:right-8 p-3 rounded-full border border-accent/10 hover:border-accent/40 bg-black/20 text-accent hover:text-accent-soft transition-all duration-300 cursor-pointer z-45"
+              aria-label="Next Image"
+            >
+              <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
+            </button>
+
+            {/* Lightbox Content Container */}
+            <motion.div
+              initial={{ scale: 0.95, y: 15 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 15 }}
+              transition={{ type: "spring", stiffness: 350, damping: 28 }}
+              className="relative max-w-5xl w-full flex flex-col items-center justify-center gap-6"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Image Frame */}
+              <div className="relative w-full h-[55vh] md:h-[68vh] flex items-center justify-center rounded-2xl md:rounded-[2rem] overflow-hidden border border-accent/15 bg-black/35 shadow-2xl">
+                <Image
+                  src={filteredItems[selectedImageIndex].src}
+                  alt={filteredItems[selectedImageIndex].alt}
+                  fill
+                  className="object-contain p-2 md:p-4"
+                  sizes="(max-width: 1200px) 90vw, 1200px"
+                  priority
+                />
+              </div>
+
+              {/* Details Panel */}
+              <div className="text-center max-w-2xl px-4 md:px-6">
+                <span className="text-accent font-body text-[10px] md:text-xs uppercase tracking-[0.25em] mb-2 inline-block font-semibold">
+                  {filteredItems[selectedImageIndex].category}
+                </span>
+                <h3 className="text-primary font-display text-xl md:text-3xl mb-2.5 font-medium">
+                  {filteredItems[selectedImageIndex].alt}
+                </h3>
+                <p className="text-secondary/80 font-body text-xs md:text-sm leading-relaxed max-w-xl mx-auto">
+                  {filteredItems[selectedImageIndex].desc}
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

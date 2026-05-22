@@ -7,6 +7,153 @@ import FloatingNav from "@/components/layout/FloatingNav";
 import Footer from "@/components/layout/Footer";
 import SilkBackground from "@/components/layout/SilkBackground";
 import { cn } from "@/lib/utils";
+import type { MenuCategory, MenuItem, Package } from "@/lib/supabase/types";
+
+// Dynamic local WebP file system image mappings (matching filenames in public/images/Menu)
+const IMAGE_FILENAME_MAP: Record<string, string> = {
+  "afghani chicken": "Afghani Chicken",
+  "aloo posto": "Aloo Posto",
+  "alur dom": "Alur Dom",
+  "assorted pakora": "Assorted Pakora",
+  "banarasi paan": "Banarasi Paan",
+  "basanti pulao": "Basanti Pulao",
+  "beetroot chop": "Beetroot Chop",
+  "begun basanti": "Begun Basanti",
+  "beguni": "Beguni",
+  "belgian chocolate mousse": "Belgian Chocolate Mousse",
+  "bhetki paturi": "Bhetki Paturi",
+  "bruschetta": "Bruschetta",
+  "butter chicken": "Butter Chicken",
+  "cajun fish": "Cajun Fish",
+  "cheese balls": "Cheese Balls",
+  "cheesecake": "Cheesecake",
+  "chhanar dalna": "Chhanar Dalna",
+  "chhanar payesh": "Chhanar Payesh",
+  "chicken 65": "Chicken 65",
+  "chicken biryani": "Chicken Biryani",
+  "chicken chaap": "Chicken Chaap",
+  "chicken curry": "Chicken Curry",
+  "chicken daak bungalow": "Chicken Daak Bungalow",
+  "chicken do pyaza": "Chicken Do Pyaza",
+  "chicken egg biryani": "Chicken Egg Biryani",
+  "chicken fried rice": "Chicken Fried Rice",
+  "chicken handi": "Chicken Handi",
+  "chicken kabiraji": "Chicken Kabiraji",
+  "chicken kosha": "Chicken Kosha",
+  "chicken lababdar": "Chicken Lababdar",
+  "chicken lollipop": "Chicken Lollipop",
+  "chicken manchurian": "Chicken Manchurian",
+  "chicken nuggets": "Chicken Nuggets",
+  "chicken pakora": "Chicken Pakora",
+  "chicken rezala": "Chicken Rezala",
+  "chicken satay": "Chicken Satay",
+  "chicken stroganoff": "Chicken Stroganoff",
+  "chicken tikka masala gravy": "Chicken Tikka Masala Gravy",
+  "chicken à la kiev": "Chicken à la Kiev",
+  "chingri malai curry": "Chingri Malai Curry",
+  "chocolate sandesh": "Chocolate Sandesh",
+  "corn cheese nuggets": "Corn Cheese Nuggets",
+  "crispy baby corn": "Crispy Baby Corn",
+  "crispy lotus stem": "Crispy Lotus Stem",
+  "dahi puri": "Dahi Puri",
+  "dessert shooters": "Dessert Shooters",
+  "dhaniya murgh korma": "Dhaniya Murgh Korma",
+  "dhokar chop": "Dhokar Chop",
+  "dry chilli chicken": "Dry Chilli Chicken",
+  "dum pukht biryani": "Dum Pukht Biryani",
+  "falafel": "Falafel",
+  "fish butter fry": "Fish Butter Fry",
+  "fish croquette": "Fish Croquette",
+  "fish diamond fry": "Fish Diamond Fry",
+  "fish finger": "Fish Finger",
+  "fish fry": "Fish Fry",
+  "fish kabiraji": "Fish Kabiraji",
+  "fried rice": "Fried Rice",
+  "fulkopir roast": "Fulkopir Roast",
+  "fuluri": "Fuluri",
+  "garlic chicken": "Garlic Chicken",
+  "golden fried prawn": "Golden Fried Prawn",
+  "gondhoraj fish": "Gondhoraj Fish",
+  "green mango chutney": "Green Mango Chutney",
+  "honey chilli fish": "Honey Chilli Fish",
+  "ice cream": "Ice Cream",
+  "jalapeno baby corn fritters": "Jalapeno Baby Corn Fritters",
+  "jolbhora sandesh": "Jolbhora Sandesh",
+  "katla kalia": "Katla Kalia",
+  "kheer kadam": "Kheer Kadam",
+  "koi macher jhal": "Koi Macher Jhal",
+  "komola bhog": "Komola Bhog",
+  "koraishutir kochuri": "Koraishutir Kochuri",
+  "korean fried chicken": "Korean Fried Chicken",
+  "kulfi falooda": "Kulfi Falooda",
+  "kumro phuler bora": "Kumro Phuler Bora",
+  "lamb chops with jus": "Lamb Chops with Jus",
+  "langcha": "Langcha",
+  "ledikeni": "Ledikeni",
+  "makha sandesh": "Makha sandesh",
+  "malai kofta": "Malai Kofta",
+  "malpua": "Malpua",
+  "mihidana": "Mihidana",
+  "mini burgers": "Mini Burgers",
+  "misti doi": "Misti Doi",
+  "mixed fruit chutney": "Mixed Fruit Chutney",
+  "mixed hakka noodles": "Mixed Hakka Noodles",
+  "mochar chop": "Mochar Chop",
+  "mutton bhuna": "Mutton Bhuna",
+  "mutton chop": "Mutton Chop",
+  "mutton egg biryani": "Mutton Egg Biryani",
+  "mutton handi": "Mutton Handi",
+  "mutton rezala": "Mutton Rezala",
+  "mutton rogan josh": "Mutton Rogan Josh",
+  "mutton shami kebab": "Mutton Shami Kebab",
+  "mutton biryani": "Mutton biryani",
+  "nolen gurer sandesh": "Nolen Gurer Sandesh",
+  "paneer pakora": "Paneer Pakora",
+  "pani puri": "Pani Puri",
+  "pantua": "Pantua",
+  "papad": "Papad",
+  "papdi chaat": "Papdi Chaat",
+  "payesh": "Payesh",
+  "peri peri chicken": "Peri Peri Chicken",
+  "peyaji": "Peyaji",
+  "popcorn chicken": "Popcorn Chicken",
+  "posto bora": "Posto Bora",
+  "potato chutney": "Potato Chutney",
+  "potoler dorma": "Potoler Dorma",
+  "prawn cocktail": "Prawn Cocktail",
+  "prawn cutlet": "Prawn Cutlet",
+  "rabri": "Rabri",
+  "radhaballavi": "Radhaballavi",
+  "rajbhog": "Rajbhog",
+  "rasmalai": "Rasmalai",
+  "rosogolla": "Rosogolla",
+  "saffron pulao": "Saffron Pulao",
+  "sarbhaja": "Sarbhaja",
+  "sarpuria": "Sarpuria",
+  "schezwan chicken": "Schezwan Chicken",
+  "shukto": "Shukto",
+  "sitabhog": "Sitabhog",
+  "smoked bhetki canapés": "Smoked Bhetki Canapés",
+  "smoked chicken tikka": "Smoked Chicken Tikka",
+  "spring roll": "Spring Roll",
+  "steamed rice": "Steamed Rice",
+  "stuffed jalapeno": "Stuffed Jalapeno",
+  "stuffed mushroom": "Stuffed Mushroom",
+  "tempura prawns": "Tempura Prawns",
+  "thai fish finger": "Thai Fish Finger",
+  "tomato chutney": "Tomato Chutney",
+  "topse fry": "Topse Fry",
+  "vegetable chop": "Vegetable Chop"
+};
+
+const getDishImage = (dishName: string): string => {
+  const lower = dishName.toLowerCase().trim();
+  const filename = IMAGE_FILENAME_MAP[lower];
+  if (filename) {
+    return `/images/Menu/${filename}.webp`;
+  }
+  return "/images/Menu/blank.svg";
+};
 
 // Occasions Inline Data
 const OCCASIONS = [
@@ -33,67 +180,21 @@ const SERVICE_STYLES = [
 
 // Live Counters Data
 const LIVES = [
-  { id: "chaat", label: "Bengali Chaat Theatre", desc: "Interactive customized street food stations featuring spicy Gondhoraj water fountains.", src: "/images/durga puja.png" },
+  { id: "chaat", label: "Bengali Chaat Theatre", desc: "Interactive customized street food stations featuring spicy Gondhoraj water fountains.", src: "/images/durgapuja.png" },
   { id: "kebab", label: "Mughlai Kebab Station", desc: "Succulent skewered signature kebabs slow-grilled over charcoal embers.", src: "/images/exp-private.png" },
   { id: "roll", label: "Kolkata Roll Counter", desc: "Flaky hot parathas hand-rolled with spiced premium fillings.", src: "/images/exp-weddings.png" },
   { id: "mishti", label: "Mishti Plating Bar", desc: "Hot baked rosogollas and flambéed sandesh presented live by sweets artisans.", src: "/images/durga_puja_bhog.png" },
   { id: "tea", label: "Tea & Adda Corner", desc: "Fragrant clay-cup masala teas served in an authentic elite setting.", src: "/images/exp-corporate.png" },
   { id: "grill", label: "Seafood Grill Experience", desc: "Exquisite whole fresh river fish grilled live with mustard and herbs.", src: "/images/durga-bhog.png" }
 ];
-
-// Curated Food Categories
-const MENU_SECTIONS = [
-  {
-    id: "starters",
-    title: "Starters",
-    subtitle: "Exquisite opening delicacies to awaken the palate",
-    items: [
-      { id: "st-1", name: "Bipodtarini Cutlet", desc: "Gold crumbed traditional fish patty with fresh kasundi.", src: "/images/exp-weddings.png" },
-      { id: "st-2", name: "Gondhoraj Fish Fry", desc: "Premium river Bhetki fillet flavored with king lime.", src: "/images/veg.png" },
-      { id: "st-3", name: "Mochar Chop", desc: "Crisp spiced croquettes made with wild banana flowers.", src: "/images/exp-private.png" },
-      { id: "st-4", name: "Kakra Chop", desc: "Delicate golden cakes stuffed with spiced river crab meat.", src: "/images/exp-festival.png" }
-    ]
-  },
-  {
-    id: "mains",
-    title: "Main Course",
-    subtitle: "Grand centerpiece curations for the royal feast",
-    items: [
-      { id: "mn-1", name: "Kolkata Mutton Biryani", desc: "Slow-cooked mutton with fragrant rice, egg, and saffron potato.", src: "/images/durga-bhog.png" },
-      { id: "mn-2", name: "Chingri Malaikari", desc: "Jumbo gold tiger prawns slow-simmered in coconut cream.", src: "/images/durga-bhog-non-veg.png" },
-      { id: "mn-3", name: "Bhetki Paturi", desc: "Mustard marinated river bhetki steamed inside broad banana leaves.", src: "/images/durga_puja_bhog.png" }
-    ]
-  },
-  {
-    id: "specials",
-    title: "Bengali Specials",
-    subtitle: "Authentic slow-paced heritage cooking elements",
-    items: [
-      { id: "sp-1", name: "Heritage Kosha Mangsho", desc: "Thick slow-roasted mahogany mutton curry.", src: "/images/zamindari_fine_dining.png" },
-      { id: "sp-2", name: "Sona Muger Dal with Narkel", desc: "Golden mung dal finished with crisp coconut chips.", src: "/images/wedding-couple-food.png" },
-      { id: "sp-3", name: "Woodfired Luchi & Chholar Dal", desc: "Hot puffed whole wheat bread with savory sweet Bengal gram.", src: "/images/wedding-eat.png" }
-    ]
-  },
-  {
-    id: "desserts",
-    title: "Desserts & Mishti",
-    subtitle: "Heavenly nectarous sweet finishes set in clay",
-    items: [
-      { id: "ds-1", name: "Baked Mihidana with Rabri", desc: "Baked fine sweet pearls covered in condensed milk cream.", src: "/images/durga puja.png" },
-      { id: "ds-2", name: "Nolen Gurer Payesh", desc: "Heritage rice pudding crafted with liquid date palm jaggery.", src: "/images/wedding-bride.png" },
-      { id: "ds-3", name: "Traditional Mishti Doi", desc: "Sweet fermented red yogurt set in earthy clay pots.", src: "/images/wedding-couple.png" }
-    ]
-  },
-  {
-    id: "beverages",
-    title: "Beverages",
-    subtitle: "Refreshing local elixirs and hot traditional brews",
-    items: [
-      { id: "bv-1", name: "Gondhoraj Aam Panna", desc: "Chilled fire-roasted green mango extract with lime leaves.", src: "/images/hero-bg.png" },
-      { id: "bv-2", name: "Ahar-Ami Saffron Tea", desc: "Premium tea blend brewed in clay cups with royal saffron.", src: "/images/exp-corporate.png" }
-    ]
-  }
-];
+// Curated Food Categories metadata for subtitles
+const CATEGORY_META: Record<string, { subtitle: string }> = {
+  "Starters": { subtitle: "Exquisite opening delicacies to awaken the palate" },
+  "Main Course": { subtitle: "Grand centerpiece curations for the royal feast" },
+  "Desserts": { subtitle: "Heavenly nectarous sweet finishes set in clay" },
+  "Drinks": { subtitle: "Refreshing local elixirs and hot traditional brews" },
+  "Add-ons": { subtitle: "Bespoke accompaniments to complement your spread" }
+};
 
 export default function LuxuryFeastConfigurator() {
   const [occasion, setOccasion] = useState("wedding");
@@ -104,10 +205,39 @@ export default function LuxuryFeastConfigurator() {
   const [selectedLives, setSelectedLives] = useState<string[]>([]);
   const [selectedDishes, setSelectedDishes] = useState<string[]>([]);
 
+  // Dynamic menu states
+  const [categories, setCategories] = useState<(MenuCategory & { items: MenuItem[] })[]>([]);
+  const [packages, setPackages] = useState<Package[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   // Bidirectional events scroll tracking for mobile
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
   const eventScrollRef = useRef<HTMLDivElement>(null);
+
+  // Fetch menu categories and items from the database
+  useEffect(() => {
+    async function loadMenuData() {
+      try {
+        const res = await fetch("/api/menu");
+        if (!res.ok) throw new Error("Failed to load menu");
+        const data = await res.json();
+        if (data.categories) {
+          // Sort categories by display_order to maintain luxury flow
+          const sortedCategories = [...data.categories].sort((a, b) => a.display_order - b.display_order);
+          setCategories(sortedCategories);
+        }
+        if (data.packages) {
+          setPackages(data.packages);
+        }
+      } catch (err) {
+        console.error("Error loading menu database:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    loadMenuData();
+  }, []);
 
   const handleEventScroll = () => {
     if (eventScrollRef.current) {
@@ -147,8 +277,8 @@ export default function LuxuryFeastConfigurator() {
     const livesList = selectedLives.map(id => LIVES.find(l => l.id === id)?.label).join(", ");
     
     const dishesList = selectedDishes.map(dishId => {
-      for (const section of MENU_SECTIONS) {
-        const d = section.items.find(item => item.id === dishId);
+      for (const cat of categories) {
+        const d = cat.items.find(item => item.id === dishId);
         if (d) return d.name;
       }
       return null;
@@ -166,6 +296,52 @@ export default function LuxuryFeastConfigurator() {
 
     return `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919162917996'}?text=${encodeURIComponent(msg)}`;
   };
+
+  if (isLoading) {
+    return (
+      <SilkBackground>
+        <FloatingNav />
+        <div className="min-h-screen pt-32 pb-24 relative overflow-hidden bg-transparent">
+          <div className="w-[92vw] max-w-[1550px] mx-auto px-[clamp(1.5rem,3vw,3rem)] relative z-10">
+            {/* Header skeleton */}
+            <div className="text-center mb-16 max-w-3xl mx-auto animate-pulse">
+              <div className="h-4 w-32 bg-accent/10 mx-auto rounded-full mb-3" />
+              <div className="h-12 w-64 bg-accent/10 mx-auto rounded-xl" />
+            </div>
+
+            {/* Skeleton Grid */}
+            <div className="flex flex-col gap-16 max-w-5xl mx-auto">
+              {[1, 2].map((s) => (
+                <div key={s} className="flex flex-col gap-6 animate-pulse">
+                  <div className="border-l-2 border-accent/20 pl-4">
+                    <div className="h-7 w-48 bg-accent/10 rounded-md mb-2" />
+                    <div className="h-3 w-72 bg-accent/5 rounded-md" />
+                  </div>
+                  <div className="flex gap-6 overflow-hidden py-2">
+                    {[1, 2, 3].map((item) => (
+                      <div key={item} className="p-4 rounded-3xl bg-[#1A050B]/30 border border-accent/5 w-[270px] md:w-[310px] shrink-0 min-h-[350px] flex flex-col justify-between">
+                        <div className="w-full aspect-[4/3] rounded-2xl bg-accent/5 mb-4" />
+                        <div className="flex-1 flex flex-col gap-2">
+                          <div className="h-5 w-3/4 bg-accent/10 rounded" />
+                          <div className="h-3 w-full bg-accent/5 rounded" />
+                          <div className="h-3 w-5/6 bg-accent/5 rounded" />
+                        </div>
+                        <div className="pt-4 border-t border-accent/5 flex justify-between">
+                          <div className="h-3 w-16 bg-accent/5 rounded" />
+                          <div className="h-3 w-20 bg-accent/10 rounded" />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <Footer />
+      </SilkBackground>
+    );
+  }
 
   return (
     <SilkBackground>
@@ -429,7 +605,7 @@ export default function LuxuryFeastConfigurator() {
                               )}
                             >
                               {/* Cinematic photography */}
-                              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-3 border border-white/5">
+                              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-3 border border-white/5 bg-accent/5">
                                 <Image src={item.src} alt={item.label} fill className="object-cover" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#1A050B]/50 via-transparent to-transparent pointer-events-none" />
                               </div>
@@ -438,7 +614,7 @@ export default function LuxuryFeastConfigurator() {
                                   <h4 className={cn("font-display text-base tracking-wide transition-colors font-medium", isSelected ? "text-accent" : "text-accent-soft")}>
                                     {item.label}
                                   </h4>
-                                  <p className="font-body text-[10px] text-accent-soft/50 font-light mt-1 leading-relaxed">
+                                  <p className="font-body text-[10px] text-accent-soft/50 font-light mt-1.5 leading-relaxed">
                                     {item.desc}
                                   </p>
                                 </div>
@@ -464,75 +640,120 @@ export default function LuxuryFeastConfigurator() {
 
           </div>
 
-          {/* UNCHANGED SECTIONS: Starters, Main Course, Desserts & Mishti, Beverages */}
+          {/* DYNAMIC SECTIONS: Loaded from Supabase DB */}
           <div className="flex flex-col gap-20 max-w-5xl mx-auto">
             
             <div className="text-center mb-4">
-              <span className="font-body text-[9px] tracking-[0.3em] uppercase text-accent font-semibold mb-1 block">
-                SELECT COURSES
-              </span>
               <h2 className="font-display font-light text-3xl md:text-5xl text-accent-soft">
-                Curated Feast Menu
+                Select Courses
               </h2>
             </div>
 
-            {MENU_SECTIONS.map((section) => (
-              <div key={section.id} className="flex flex-col gap-6">
-                <div className="border-l-2 border-accent/30 pl-4">
-                  <h3 className="font-display font-light text-2xl md:text-3xl text-accent-soft">
-                    {section.title}
-                  </h3>
-                  <p className="font-body text-xs text-accent-soft/40 font-light mt-1 uppercase tracking-wider">
-                    {section.subtitle}
-                  </p>
-                </div>
+            {categories.map((cat) => {
+              // Filter items based on dietary preference
+              const filteredItems = cat.items.filter((item) => {
+                const isVegItem = item.dietary_flags.includes("veg");
+                if (dietary === "veg") return isVegItem;
+                if (dietary === "nonveg") return !isVegItem;
+                return true;
+              });
 
-                {/* Horizontal scroll layout */}
-                <div className="relative w-full py-1">
-                  <div className="flex overflow-x-auto gap-6 pb-6 pt-2 scrollbar-hide snap-x snap-mandatory scroll-smooth w-full">
-                    {section.items.map((item) => {
-                      const isSelected = selectedDishes.includes(item.id);
-                      return (
-                        <div
-                          key={item.id}
-                          onClick={() => toggleDish(item.id)}
-                          className={cn(
-                            "snap-center p-4 rounded-3xl bg-[#1A050B]/60 backdrop-blur-md border w-[270px] md:w-[310px] shrink-0 relative overflow-hidden flex flex-col justify-between min-h-[350px] cursor-pointer transition-all duration-500 hover:scale-[1.01] hover:shadow-[0_0_30px_rgba(212,163,115,0.1)]",
-                            isSelected ? "border-accent shadow-[0_0_35px_rgba(212,163,115,0.2)]" : "border-accent/10 hover:border-accent/30"
-                          )}
-                        >
-                          <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-4 border border-white/5">
-                            <Image src={item.src} alt={item.name} fill className="object-cover" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#1A050B]/60 via-transparent to-transparent pointer-events-none" />
-                          </div>
+              const meta = CATEGORY_META[cat.name] || { subtitle: "Bespoke accompaniment curation for the feast" };
 
-                          <div className="flex-1 flex flex-col justify-between">
-                            <div>
-                              <h4 className={cn("font-display text-lg tracking-wide transition-colors font-medium", isSelected ? "text-accent" : "text-accent-soft")}>
-                                {item.name}
-                              </h4>
-                              <p className="font-body text-[11px] text-accent-soft/50 font-light mt-1.5 leading-relaxed font-body">
-                                {item.desc}
-                              </p>
-                            </div>
-
-                            <div className="pt-4 flex justify-between items-center border-t border-accent/5">
-                              <span className="font-body text-[8px] tracking-wider uppercase text-accent-soft/20 font-body">Signature Dish</span>
-                              <span className={cn(
-                                "font-body text-[9px] uppercase tracking-wider font-bold transition-all duration-300 font-body",
-                                isSelected ? "text-accent" : "text-accent-soft/40"
-                              )}>
-                                {isSelected ? "✓ Added" : "Add to Experience"}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
+              return (
+                <div key={cat.id} className="flex flex-col gap-6">
+                  <div className="border-l-2 border-accent/30 pl-4">
+                    <h3 className="font-display font-light text-2xl md:text-3xl text-accent-soft flex items-center gap-3">
+                      {cat.name}
+                      {filteredItems.length > 0 && (
+                        <span className="text-[10px] uppercase font-bold tracking-widest font-body text-accent-soft/40 px-2.5 py-0.5 rounded-full bg-accent/5 border border-accent/10">
+                          {filteredItems.length} {filteredItems.length === 1 ? "Item" : "Items"}
+                        </span>
+                      )}
+                    </h3>
+                    <p className="font-body text-xs text-accent-soft/40 font-light mt-1 uppercase tracking-wider">
+                      {meta.subtitle}
+                    </p>
                   </div>
+
+                  {filteredItems.length === 0 ? (
+                    <div className="p-8 rounded-3xl border border-accent/10 bg-[#1A050B]/20 text-center max-w-md mx-auto my-4 w-full">
+                      <span className="text-xs font-body text-accent-soft/40 uppercase tracking-widest block mb-2 font-bold">No Selections Available</span>
+                      <p className="text-[11px] text-accent-soft/30 font-light leading-relaxed">
+                        No dishes match the "{FOOD_PREFS.find(d => d.id === dietary)?.name}" preference in this course. Try switching preference above.
+                      </p>
+                    </div>
+                  ) : (
+                    /* Horizontal scroll layout */
+                    <div className="relative w-full py-1">
+                      <div className="flex overflow-x-auto gap-6 pb-6 pt-2 scrollbar-hide snap-x snap-mandatory scroll-smooth w-full">
+                        {filteredItems.map((item) => {
+                          const isSelected = selectedDishes.includes(item.id);
+                          const isVeg = item.dietary_flags.includes("veg");
+                          
+                          return (
+                            <div
+                              key={item.id}
+                              onClick={() => toggleDish(item.id)}
+                              className={cn(
+                                "snap-center p-4 rounded-3xl bg-[#1A050B]/60 backdrop-blur-md border w-[270px] md:w-[310px] shrink-0 relative overflow-hidden flex flex-col justify-between min-h-[360px] cursor-pointer transition-all duration-500 hover:scale-[1.01] hover:shadow-[0_0_30px_rgba(212,163,115,0.1)]",
+                                isSelected ? "border-accent shadow-[0_0_35px_rgba(212,163,115,0.2)]" : "border-accent/10 hover:border-accent/30"
+                              )}
+                            >
+                              {/* Cinematic photography & Badges */}
+                              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-4 border border-white/5 bg-accent/5">
+                                <Image 
+                                  src={getDishImage(item.name)} 
+                                  alt={item.name} 
+                                  fill 
+                                  className="object-cover transition-transform duration-700 hover:scale-105" 
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#1A050B]/60 via-transparent to-transparent pointer-events-none" />
+                                
+                                {/* Veg/Non-Veg Badge */}
+                                <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#150307]/90 border border-white/10 backdrop-blur-md">
+                                  <span className={cn(
+                                    "w-1.5 h-1.5 rounded-full",
+                                    isVeg ? "bg-emerald-500 shadow-[0_0_8px_#10b981]" : "bg-red-500 shadow-[0_0_8px_#ef4444]"
+                                  )} />
+                                  <span className="text-[8px] font-bold uppercase tracking-widest text-accent-soft/90 font-body">
+                                    {isVeg ? "Veg" : "Non-Veg"}
+                                  </span>
+                                </div>
+                              </div>
+
+                              <div className="flex-1 flex flex-col justify-between">
+                                <div>
+                                  <h4 className={cn("font-display text-lg tracking-wide transition-colors font-medium", isSelected ? "text-accent" : "text-accent-soft")}>
+                                    {item.name}
+                                  </h4>
+                                  <p className="font-body text-[11px] text-accent-soft/50 font-light mt-1.5 leading-relaxed line-clamp-2">
+                                    {item.description || "Artisanal luxury feast curation crafted by Hessel's master culinary team."}
+                                  </p>
+                                </div>
+
+                                <div className="pt-4 flex justify-between items-center border-t border-accent/5">
+                                  {/* Sleek Course Category Badge */}
+                                  <span className="font-body text-[8px] tracking-widest uppercase text-accent-soft/30 font-bold">
+                                    {cat.name.slice(0, -1)}
+                                  </span>
+                                  <span className={cn(
+                                    "font-body text-[9px] uppercase tracking-wider font-bold transition-all duration-300",
+                                    isSelected ? "text-accent" : "text-accent-soft/40"
+                                  )}>
+                                    {isSelected ? "✓ Added" : "Add to Experience"}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
                 </div>
-              </div>
-            ))}
+              );
+            })}
 
             {/* SUMMARY CARD & WHATSAPP CURATOR ACTION */}
             <section className="py-8">
@@ -577,11 +798,15 @@ export default function LuxuryFeastConfigurator() {
                   {selectedDishes.length > 0 ? (
                     <div>
                       <span className="text-accent/40 block text-[9px] uppercase tracking-wider font-bold mb-1">Curated Dishes</span>
-                      <p className="font-light leading-relaxed font-body">
+                      <p className="font-light leading-relaxed">
                         {selectedDishes.map(id => {
-                          for (const section of MENU_SECTIONS) {
-                            const d = section.items.find(item => item.id === id);
-                            if (d) return d.name;
+                          for (const cat of categories) {
+                            const d = cat.items.find(item => item.id === id);
+                            if (d) {
+                              const isVeg = d.dietary_flags.includes("veg");
+                              const vegIcon = isVeg ? "🟢" : "🔴";
+                              return `${vegIcon} ${d.name}`;
+                            }
                           }
                           return null;
                         }).filter(Boolean).join("  •  ")}
@@ -596,7 +821,7 @@ export default function LuxuryFeastConfigurator() {
                   {selectedLives.length > 0 && (
                     <div className="mt-2">
                       <span className="text-accent/40 block text-[9px] uppercase tracking-wider font-bold mb-1">Live corners selected</span>
-                      <p className="font-light leading-relaxed font-body">
+                      <p className="font-light leading-relaxed">
                         {selectedLives.map(id => LIVES.find(l => l.id === id)?.label).join("  •  ")}
                       </p>
                     </div>

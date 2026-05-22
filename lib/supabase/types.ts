@@ -4,7 +4,7 @@
 // `supabase gen types` is wired into the CI pipeline.
 // ============================================================
 
-export type DietaryFlag = "veg" | "vegan" | "gluten-free";
+export type DietaryFlag = string;
 export type QuotationStatus = "new" | "contacted" | "closed";
 
 export interface Package {
@@ -39,6 +39,7 @@ export interface MenuItem {
   package_ids: string[];           // empty = available in all packages
   is_active: boolean;
   display_order: number;
+  image_url?: string | null;
   created_at: string;
   updated_at: string;
 }
